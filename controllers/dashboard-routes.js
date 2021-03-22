@@ -10,33 +10,16 @@ router.get('/', withAuth, (req, res) => {
   Post.findAll({
     where: {
       user_id: req.session.user_id
-    },
-    attributes: [
-      'id',
-      'body',
-      'title'],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'body', 'post_id', 'user_id'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
+    } 
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
-      res.render('all-post', {layout:"dashboard", posts, loggedIn: true });
+      res.render('all-post', {layout:"dashboard", posts });
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+    //   res.status(500).json(err);
+      res.redirect('login');
     });
 });
 
