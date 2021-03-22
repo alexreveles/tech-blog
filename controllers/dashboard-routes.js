@@ -13,14 +13,12 @@ router.get('/', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'post_url',
-      'title',
-      'created_at'
-    ],
+      'body',
+      'title'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'body', 'post_id', 'user_id'],
         include: {
           model: User,
           attributes: ['username']
@@ -34,7 +32,7 @@ router.get('/', withAuth, (req, res) => {
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
-      res.render('dashboard', { posts, loggedIn: true });
+      res.render('all-post', {layout:"dashboard", posts, loggedIn: true });
     })
     .catch(err => {
       console.log(err);
@@ -46,14 +44,13 @@ router.get('/edit/:id', withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
     attributes: [
       'id',
-      'post_url',
-      'title',
-      'created_at'
+      'body',
+      'title'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'body', 'post_id', 'user_id'],
         include: {
           model: User,
           attributes: ['username']
@@ -81,6 +78,12 @@ router.get('/edit/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.get("/new", withAuth, (req, res) => {
+    res.render("new-post", {
+      layout: "dashboard"
+    });
+  });
 
 module.exports = router;
 

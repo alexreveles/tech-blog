@@ -6,9 +6,10 @@ class Post extends Model {}
 
 // create fields/columns for Post model
 Post.init(
+
   {
       title: DataTypes.STRING,
-      body: DataTypes.STRING
+      body: DataTypes.STRING,
 
   },
 

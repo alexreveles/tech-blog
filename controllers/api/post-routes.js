@@ -9,19 +9,16 @@ router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
       'id',
-      'post_url',
+      'body',
       'title',
-      'created_at'
+      
       
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
+        attributes: ['id', 'body', 'post_id', 'user_id'],
+        
       },
       {
         model: User,
@@ -43,14 +40,14 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'post_url',
+        
       'title',
       'created_at'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'body', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -75,11 +72,18 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
+
+
+router.get('/')
+
+
+
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
     title: req.body.title,
-    post_url: req.body.post_url,
+    body: req.body.body,
     user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
