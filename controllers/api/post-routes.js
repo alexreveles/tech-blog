@@ -40,14 +40,14 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-        
       'title',
-      'created_at'
+      'body',
+      'createdAt'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'post_id', 'createdAt'],
         include: {
           model: User,
           attributes: ['username']
@@ -73,9 +73,6 @@ router.get('/:id', (req, res) => {
 });
 
 
-
-
-router.get('/')
 
 
 
@@ -118,7 +115,6 @@ router.put('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
 router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Post.destroy({
