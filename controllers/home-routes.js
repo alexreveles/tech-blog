@@ -64,7 +64,7 @@ router.get('/post/:id', (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
 
@@ -79,4 +79,6 @@ router.get('/signup', (req, res) => {
   
     res.render('sign-up');
   });
+
+ 
 module.exports = router;
