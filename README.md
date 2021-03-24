@@ -1,5 +1,5 @@
 
-  ### README.md ![Github License](https://img.shields.io/badge/license-MIT-red.svg)
+  ### Tech Blog ![Github License](https://img.shields.io/badge/license-MIT-red.svg)
   
   ## Description
   A CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
