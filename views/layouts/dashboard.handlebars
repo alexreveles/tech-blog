@@ -3,24 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {{!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet"  href="/stylesheets/style.css">
     </head>
 
-<body>
-    <nav>
+<body class="card-panel green lighten-2">
+    <nav class="white-text brown darken-4">
+        <a href="#" class="brand-logo center font-size large">Tech Blog</a>
         <ul>
             <li> <a href="/">Home</a> </li>
             <li> <a href="/dashboard"> Dashboard</a></li>
             <li> <a href="#" id="logout"> Logout</a></li>
         </ul>
 
-        <div>
-            <h1><a href="/">The Tech Blog</a></h1>
-        </div>
+        
     </nav>
 
     <main>
@@ -28,10 +27,10 @@
     </main>
     
     <footer class="footer flex-row justify-center">
-    <a href="/dashboard/new">➕ New Post</a>
+    <a href="/dashboard/new" class="blue-text"> <h4> ➕ New Post</h4></a>
   </footer>
   <footer>
-        Thanks for visiting!
+        <h5>Thanks for visiting!</h5>
     </footer>
 
 </body>
