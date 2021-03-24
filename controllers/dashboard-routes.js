@@ -10,7 +10,24 @@ router.get('/', withAuth, (req, res) => {
   Post.findAll({
     where: {
       user_id: req.session.user_id
-    } 
+    },
+    attributes: [
+      'id',
+      'body',
+      'title',
+      'createdAt'
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'post_id', 'user_id', 'createdAt'],
+        
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
@@ -28,12 +45,13 @@ router.get('/edit/:id', withAuth, (req, res) => {
     attributes: [
       'id',
       'body',
-      'title'
+      'title',
+      'createdAt'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'post_id', 'user_id'],
+        attributes: ['id', 'body', 'post_id', 'user_id', 'createdAt'],
         include: {
           model: User,
           attributes: ['username']

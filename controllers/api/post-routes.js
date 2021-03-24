@@ -7,17 +7,20 @@ const withAuth = require('../../utils/auth');
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
+    order: [['createdAt', 'DESC']],
     attributes: [
       'id',
       'body',
       'title',
+      'createdAt'
       
       
     ],
+    order: [['createdAt', 'DESC']],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'post_id', 'user_id'],
+        attributes: ['id', 'body', 'post_id', 'user_id', 'createdAt'],
         
       },
       {
