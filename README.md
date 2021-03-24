@@ -27,7 +27,7 @@
   ## Questions
   If you have any questions regarding about the application, please contact me https://github.com/alexreveles or alexreveles@yahoo.com
 
-### heroku
+### https://alex-tech-blogg.herokuapp.com/
 ### https://github.com/alexreveles/tech-blog
 ### https://github.com/alexreveles
 
